@@ -1,0 +1,7 @@
+
+USER STORY
+
+as a team member
+I want to be able to CREATE MEETINGS, VIEW/ADD EMPLOYEES, CREATE/VIEW TASKS FOR EMPLOYEES, and VIEW CALENDAR.
+so that I can STAY ORGANIZED.
+
