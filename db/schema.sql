@@ -1,3 +1,8 @@
+-- CREATE DATABASE --
+DROP DATABASE IF EXISTS Employee_management;
+
+CREATE DATABASE Employee_management;
+USE Employee_management;
 
 --  DEPARTMENT TABLE - endpoints  rest 
 CREATE TABLE Department (
