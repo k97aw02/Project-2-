@@ -1,5 +1,5 @@
 {
-  "name": "Project-2-",
+  "name": "project-2-",
   "version": "1.0.0",
   "description": "USER STORY",
   "main": "index.js",
@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "handlebars": "^4.7.6",
     "mysql": "^2.18.1",
-    "sequelize": "^6.3.3"
+    "sequelize": "^6.3.3",
+    "sequelize-cli": "^6.2.0"
   }
 }
