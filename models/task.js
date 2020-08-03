@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 notNull: {
-                    msg: 'Please enter input'
+                    msg: 'Please enter a task'
                 }
             }
         }

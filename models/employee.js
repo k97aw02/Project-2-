@@ -4,12 +4,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-
+                notEmpty: true,
+                msg:'thsi i'
             }
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 isEmail: true,
                 notEmpty: true
@@ -18,9 +20,15 @@ module.exports = function (sequelize, DataTypes) {
         phone_number: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
-                notEmpty: true
+                notEmpty: true,
+                is: (/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g),
             }
         },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+          }
     })
 }; 

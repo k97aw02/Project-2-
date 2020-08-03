@@ -4,6 +4,9 @@ const express = require('express');
 const routes = require('./controllers');
 // instance of express 
 const app = express();
+
+// require morgan for testing purposes
+const morgan = require('morgan'); 
 // short circuit PORT 
 const PORT = process.env.PORT || 3001;
 // require the models for the starting 
@@ -16,9 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
   app.use(express.static('public'));
-}; 
+// }; 
 
 // Add routes, both API and view
 app.use(routes);
