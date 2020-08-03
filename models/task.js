@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const Task = sequelize.define('Tasks', {
+    const Task = sequelize.define('Task', {
         task: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -9,6 +9,8 @@ module.exports = function (sequelize, DataTypes) {
                 }
             }
         }
+    },{
+        freezeTableName: true
     }); 
     return Task; 
 }; 

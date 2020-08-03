@@ -1,13 +1,15 @@
 
 
-module.exports = function(sequelize, DataTypes) {
-    const Role  = sequelize.define("Role", {
+module.exports = function (sequelize, DataTypes) {
+    const Role = sequelize.define("Role", {
         title: {
-           type: DataTypes.STRING,
-           allowNull: false,
-        }, 
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+    }, {
+        freezeTableName: true
     });
-    Role.associate = function(models) {
+    Role.associate = function (models) {
         Role.belongsTo(models.Department, {
             foreignKey: {
                 allowNull: false
@@ -15,5 +17,4 @@ module.exports = function(sequelize, DataTypes) {
         })
     }
     return Role;
-  };
-  
+};

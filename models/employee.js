@@ -29,19 +29,19 @@ module.exports = function (sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        role_id: {
-            type: DataTypes.INTEGER,
         }
+    },{
+        freezeTableName: true
     });
     Employee.associate = function(models) {
         Employee.belongsTo(models.Role, {
             foreignKey: {
-                allowNull: false
+                allowNull: false,
+                name: "role_ID"
             }
         });
 
-        // how would i do the association for a manager 
+        // how would I do the association for a manager 
 
     }
     return Employee;
