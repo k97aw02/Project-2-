@@ -4,6 +4,15 @@ DROP DATABASE IF EXISTS Employee_management;
 CREATE DATABASE Employee_management;
 USE Employee_management;
 
+
+
+
+--------- the table will not be added manually 
+--- just for testing   
+
+
+
+
 --  DEPARTMENT TABLE - endpoints  rest 
 CREATE TABLE Department (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
