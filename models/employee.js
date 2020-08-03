@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 notEmpty: true,
-                msg:'thsi i'
+                msg: 'thsi i'
             }
         },
         email: {
@@ -29,6 +29,20 @@ module.exports = function (sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false
-          }
-    })
+        },
+        role_id: {
+            type: DataTypes.INTEGER,
+        }
+    });
+    Employee.associate = function(models) {
+        Employee.belongsTo(models.Role, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        // how would i do the association for a manager 
+
+    }
+    return Employee;
 }; 
