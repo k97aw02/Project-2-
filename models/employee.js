@@ -54,7 +54,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
-        // how would I do the association for a manager .... 
+        // manager association
         Employee.belongsTo(Employee, { as: 'employee', foreignKey: 'manage_Id', allowNull: true });
 
         Employee.belongsToMany(models.Task, { through: models.Employee_Task });
