@@ -43,28 +43,21 @@ module.exports = function (sequelize, DataTypes) {
             freezeTableName: true,
         }
     );
+
     Employee.associate = function (models) {
+        // associtation with roles
         Employee.belongsTo(models.Role, {
             foreignKey: {
                 allowNull: false,
                 name: "role_ID",
-            },
+                // onDelete: "CASCADE"
+            }
         });
-        Employee.associate = function (models) {
-            // associtation with roles
-            Employee.belongsTo(models.Role, {
-                foreignKey: {
-                    allowNull: false,
-                    name: "role_ID",
-                    // onDelete: "CASCADE"
-                }
-            });
 
-            // how would I do the association for a manager .... 
-            Employee.belongsTo(Employee, { as: 'employee', foreignKey: 'manage_Id', allowNull: true });
+        // how would I do the association for a manager .... 
+        Employee.belongsTo(Employee, { as: 'employee', foreignKey: 'manage_Id', allowNull: true });
 
-            Employee.belongsToMany(models.Task, { through: models.Employee_Task });
-        };
-        return Employee;
+        Employee.belongsToMany(models.Task, { through: models.Employee_Task });
     };
+    return Employee;
 };
