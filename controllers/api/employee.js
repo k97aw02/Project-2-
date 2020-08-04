@@ -8,66 +8,46 @@ let db = require('../../models')
 router.get('/', async (req, res) => {
 
     let data = await db.Employee.findAll({});
-    res.json(data);
+    await res.json(data);
 });
 
+//post a user , route => ('api/invitation')
+router.post('/', async function (req, res) {
+    let task = await db.Employee.create({
+        task: req.body.task,
+        //role_id needs to be linked here
+    });
+    await res.json(task);
+});
 
-// router.post('/', async (req, res) => {
+// update user by id 
+router.put('/:id', async function (req, res) {
+    let response = await db.Employee.update(
+        {
+            task: req.body.task,
+        },
+        {
+            where: {
+                id: req.params.id,
+            },
+        },
+    )
 
-//     console.log(req.body);
+    res.json(response);
 
-//     let user = await db.Employee.create({
-//         full_name: req.body.name,
-//         email: req.body.email,
-//         password: req.body.password
-//     }); 
+});
 
-//     res.send(user);
+// delete Task by id 
+router.delete('/:id', async function (req, res) {
 
-// });
+    let response = await db.Employee.destroy({
+        where: {
+            id: req.params.id,
+        },
+    })
+    await res.json(response);
 
-// // get all invitation information , route => ('api/invitation')
-// router.get('/', function (req, res) {
-//   db.Invitation.findAll({}).then(function (dbInvitation) {
-//     res.json(dbInvitation);
-//   });
-// });
-
-// post a user , route => ('api/invitation')
-// router.post('/', function (req, res) {
-//   db.Invitation.create({
-//     status: req.body.status,
-//   }).then(function (dbCreateInvitation) {
-//     res.json(dbCreateInvitation);
-//   });
-// });
-
-// // update user by id , route => ('api/invitation/:id')
-// router.put('/:id', function (req, res) {
-//   db.Invitation.update(
-//     {
-//       status: req.body.status,
-//     },
-//     {
-//       where: {
-//         id: req.params.id,
-//       },
-//     },
-//   ).then(function (dbUpdateInvitation) {
-//     res.json(dbUpdateInvitation);
-//   });
-// });
-
-// // delete user by id , route => ('api/invitation/:id')
-// router.delete('/:id', function (req, res) {
-//   db.Invitation.destroy({
-//     where: {
-//       id: req.params.id,
-//     },
-//   }).then(function (dbInvitationDelete) {
-//     res.json(dbInvitationDelete);
-//   });
-// });
+});
 
 
 
