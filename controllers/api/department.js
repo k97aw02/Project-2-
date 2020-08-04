@@ -4,7 +4,7 @@ const router = require('express').Router();
 let db = require('../../models')
 
 router.get('/', (req, res) => {
-    res.send('hello this is the department route'); 
+    res.send('hello this is the department controller'); 
 }); 
 
 
