@@ -1,15 +1,14 @@
+/// [DONE]
+// ROUTER EXPRESS
 const router = require('express').Router(); 
 
 /// require the db to pull data from models 
 let db = require('../../models')
 
-router.get('/', (req, res) => {
-    res.send('hello this is the department controller'); 
-}); 
 
 router.get('/', async (req, res) => {
-    let roles = await db.Department.findAll({});
-    res.json(roles);
+    let department = await db.Department.findAll({});
+    res.json(department);
 });
 
 
