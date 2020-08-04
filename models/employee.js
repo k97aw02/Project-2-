@@ -27,10 +27,10 @@ module.exports = function (sequelize, DataTypes) {
             },
             phone_number: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                // allowNull: false,
                 unique: true,
                 validate: {
-                    notEmpty: true,
+                    // notEmpty: true,
                     is: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
                 },
             },
