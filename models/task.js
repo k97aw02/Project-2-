@@ -12,5 +12,10 @@ module.exports = function (sequelize, DataTypes) {
     },{
         freezeTableName: true
     }); 
+
+    Task.associate = function(models) {
+        Task.belongsToMany(models.Employee, {through: models.Employee_tasks})
+    };
+
     return Task; 
 }; 
