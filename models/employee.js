@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false,
                 validate: {
                     notEmpty: true,
-                    msg: "thsi i",
+                    msg: "Please enter your name",
                 },
             },
             email: {

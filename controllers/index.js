@@ -2,11 +2,15 @@
 const path = require('path');
 const router = require('express').Router();
 // const apiRoutes = require('./api');
+// const htmlRoutes = require('./api');
 
 // API Routes
 // router.use('/api', apiRoutes);
 
-// If no API routes are hit, send the React app
+// HTML Routes 
+// router.use('/', htmlRoutes);
+
+// If no API or html routes are hit send to 
 router.use(function (req, res) {
   res.sendFile(path.join(__dirname, '../public/login.html'));
 });
