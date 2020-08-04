@@ -1,7 +1,7 @@
 // require express 
 const express = require('express');
 // set up routes for the server 
-// const routes = require('./controller');
+const routes = require('./controllers');
 // instance of express 
 const app = express();
 // require morgan for testing purposes
@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 let db = require('./models');
 
 // use morgan 
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 
 // Define middleware here
 // for form data 
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 }; 
 
 // Add routes, both API and view
-// app.use(routes);
+app.use(routes);
 
 // Start the API server
 // ADD SEQUELIZE HERE TO CONNECT TO YOUR DB

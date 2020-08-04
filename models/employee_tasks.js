@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
         notNull: true,
       },
     },
+  },{
+    freezeTableName: true
   });
   return Employee_tasks;
 };
