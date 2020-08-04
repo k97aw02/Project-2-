@@ -5,7 +5,7 @@ const routes = require('./controllers');
 // instance of express 
 const app = express();
 // require morgan for testing purposes
-const morgan = require('morgan'); 
+const morgan = require('morgan');
 
 
 // short circuit PORT 
@@ -24,16 +24,18 @@ app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('public'));
+app.use(express.static('public'));
 // }; 
 
-// Add routes, both API and view
+// Add routes, both API and html
 app.use(routes);
+
+// app.use
 
 // Start the API server
 // ADD SEQUELIZE HERE TO CONNECT TO YOUR DB
 db.sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server now listening on PORT ${PORT}!`);
-  });
+    app.listen(PORT, () => {
+        console.log(`Server now listening on PORT ${PORT}!`);
+    });
 });
