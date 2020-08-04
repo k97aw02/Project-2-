@@ -1,30 +1,31 @@
-// instance of the router 
-const router = require('express').Router();
+/// MODEL [DONE]
+// ROUTER EXPRESS
+const router = require('express').Router(); 
 
 /// require the db to pull data from models 
 let db = require('../../models')
 
-// all employees 
-router.get('/', async (req, res) => {
 
-    let data = await db.Employee.findAll({});
-    await res.json(data);
+router.get('/', async (req, res) => {
+    let department = await db.Department.findAll({});
+    res.json(department);
 });
 
-//post a user , route => ('api/invitation')
+
+//post 
 router.post('/', async function (req, res) {
-    let task = await db.Employee.create({
-        task: req.body.task,
-        //role_id needs to be linked here
+    let department = await db.Department.create({
+        name: req.body.name,
+        //role_id needs to be linked here after creating the role
     });
-    await res.json(task);
+    await res.json(department);
 });
 
 // update user by id 
 router.put('/:id', async function (req, res) {
-    let response = await db.Employee.update(
+    let response = await db.Department.update(
         {
-            task: req.body.task,
+            name: req.body.name,
         },
         {
             where: {
@@ -40,7 +41,7 @@ router.put('/:id', async function (req, res) {
 // delete Task by id 
 router.delete('/:id', async function (req, res) {
 
-    let response = await db.Employee.destroy({
+    let response = await db.Department.destroy({
         where: {
             id: req.params.id,
         },
@@ -48,7 +49,6 @@ router.delete('/:id', async function (req, res) {
     await res.json(response);
 
 });
-
 
 
 module.exports = router; 
