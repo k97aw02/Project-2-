@@ -1,3 +1,5 @@
+// MODEL [DONE]
+// ROUTER 
 const router = require('express').Router();
 
 /// require the db to pull data from models 
