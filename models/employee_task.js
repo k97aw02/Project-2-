@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Employee_tasks = sequelize.define(
-    "Employee_tasks",
+  const Employee_Task = sequelize.define(
+    "Employee_Task",
     {
       completed_date: {
         type: DataTypes.STRING,
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return Employee_tasks;
+  return Employee_Task;
 };
 
 // create table Employee_Tasks(
