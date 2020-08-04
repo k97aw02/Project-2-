@@ -48,7 +48,9 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         // how would I do the association for a manager 
+        // Employee.hasOne()
 
+        Employee.belongsToMany(models.Task, {through: models.Employee_tasks})
     }
     return Employee;
 }; 
