@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 module.exports = function (sequelize, DataTypes) {
     const Employee = sequelize.define(
         "Employee",
@@ -37,15 +39,24 @@ module.exports = function (sequelize, DataTypes) {
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
+                validate: {
+                    notEmpty: true
+                }
             },
         },
         {
             freezeTableName: true,
+            hooks: {
+                afterValidate: function () {
+                    console.log(`this message happens after validation ${res}`);
+                }
+            }
         }
     );
 
     Employee.associate = function (models) {
-        // associtation with roles
+
+        // ROLES associtation 
         Employee.belongsTo(models.Role, {
             foreignKey: {
                 allowNull: false,
@@ -54,10 +65,18 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
 
-        // manager association
-        Employee.belongsTo(Employee, { as: 'employee', foreignKey: 'manage_Id', allowNull: true });
+        // MANAGER association
+        Employee.belongsTo(Employee, {
+            as: 'employee',
+            foreignKey: {
+                name: 'manage_Id',
+                allowNull: true
+            }
+        });
 
-        Employee.belongsToMany(models.Task, { through: models.Employee_Task });
+        Employee.belongsToMany(models.Task, {
+            through: models.Employee_Task
+        });
     };
     return Employee;
 };
