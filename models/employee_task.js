@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Employee_tasks = sequelize.define(
-    "Employee_tasks",
+    "Employee_Task",
     {
       completed_date: {
         type: DataTypes.STRING,
@@ -16,14 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Employee.associate = function (models) {
-    Employee.belongsToMany(models.Task, { through: models.Employee_tasks });
-  };
-  Task.associate = function (models) {
-    Task.belongsToMany(models.Employee, { through: models.Employee_tasks });
-  };
-
-  return Employee_tasks;
+  return Employee_Task;
 };
 
 // create table Employee_Tasks(
