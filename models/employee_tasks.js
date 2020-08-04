@@ -16,13 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Employee.associate = function (models) {
-    Employee.belongsToMany(models.Task, { through: models.Employee_tasks });
-  };
-  Task.associate = function (models) {
-    Task.belongsToMany(models.Employee, { through: models.Employee_tasks });
-  };
-
   return Employee_tasks;
 };
 

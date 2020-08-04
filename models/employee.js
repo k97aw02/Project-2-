@@ -44,12 +44,13 @@ module.exports = function (sequelize, DataTypes) {
         Employee.belongsTo(models.Role, {
             foreignKey: {
                 allowNull: false,
-                name: "role_ID"
+                name: "role_ID",
+                // onDelete: "CASCADE"
             }
         });
 
-        // how would I do the association for a manager 
-        Employee.belongsTo(Employee, { as: 'employee', foreignKey: 'manage_Id' });
+        // how would I do the association for a manager .... 
+        Employee.belongsTo(Employee, { as: 'employee', foreignKey: 'manage_Id', allowNull: true });
 
         Employee.belongsToMany(models.Task, {through: models.Employee_tasks})
     }
