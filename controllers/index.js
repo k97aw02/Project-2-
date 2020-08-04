@@ -1,3 +1,4 @@
+// express will hit this index route first before hitting anything else 
 const path = require('path');
 const router = require('express').Router();
 // const apiRoutes = require('./api');
