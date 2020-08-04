@@ -17,6 +17,12 @@ module.exports = function (sequelize, DataTypes) {
                 notEmpty: true
             }
         },
+        salary: {
+            type: DataTypes.STRING,
+            validate: {
+                is:(/^[0-9]*$/)
+            }
+        },
         phone_number: {
             type: DataTypes.STRING,
             allowNull: false,
