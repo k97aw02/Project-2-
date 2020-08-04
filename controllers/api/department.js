@@ -1,4 +1,4 @@
-/// [DONE]
+/// MODEL [DONE]
 // ROUTER EXPRESS
 const router = require('express').Router(); 
 
@@ -12,11 +12,11 @@ router.get('/', async (req, res) => {
 });
 
 
-//post a user , route => ('api/invitation')
+//post 
 router.post('/', async function (req, res) {
     let department = await db.Department.create({
         name: req.body.name,
-        //role_id needs to be linked here
+        //role_id needs to be linked here after creating the role
     });
     await res.json(department);
 });
