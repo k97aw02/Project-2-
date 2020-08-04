@@ -40,6 +40,7 @@ module.exports = function (sequelize, DataTypes) {
         freezeTableName: true
     });
     Employee.associate = function(models) {
+        // associtation with roles
         Employee.belongsTo(models.Role, {
             foreignKey: {
                 allowNull: false,
@@ -48,7 +49,7 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         // how would I do the association for a manager 
-        // Employee.hasOne()
+        Employee.belongsTo(Employee, { as: 'employee', foreignKey: 'manage_Id' });
 
         Employee.belongsToMany(models.Task, {through: models.Employee_tasks})
     }
