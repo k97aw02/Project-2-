@@ -1,5 +1,6 @@
 // instance of the router 
 const router = require('express').Router();
+const employee = require('./employee');
 
 /// require the db to pull data from models 
 let db = require('../../models')
@@ -14,7 +15,7 @@ router.get('/', async (req, res) => {
 //post a user , route => ('api/invitation')
 router.post('/', async function (req, res) {
     let task = await db.Employee.create({
-        task: req.body.task,
+        task: req.body.task
         //role_id needs to be linked here
     });
     await res.json(task);
@@ -49,6 +50,10 @@ router.delete('/:id', async function (req, res) {
 
 });
 
+// [DONE]
+router.get('*',async function (req, res) {
+        res.redirect('/api/employee');
+});
 
 
 module.exports = router; 

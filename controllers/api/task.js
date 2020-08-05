@@ -7,15 +7,19 @@ let db = require('../../models')
 
 router.get('/', async (req, res) => {
     let roles = await db.Task.findAll({});
-    res.json(roles);
+    await res.json(roles);
 });
 
+router.get('/single/:id', async (req, res) => {
+    let key = req.params.id;
+    let roles = await db.Task.findOne({ where: { id: key } });
+    await res.json(roles);
+});
 
 //post a user , route => ('api/invitation')
 router.post('/', async function (req, res) {
     let task = await db.Task.create({
         task: req.body.task,
-        //role_id needs to be linked here
     });
     await res.json(task);
 });
@@ -32,21 +36,23 @@ router.put('/:id', async function (req, res) {
             },
         },
     )
-
-    res.json(response);
-
+    await res.json(response);
 });
 
 // delete Task by id 
 router.delete('/:id', async function (req, res) {
-
     let response = await db.Task.destroy({
         where: {
             id: req.params.id,
         },
     })
     await res.json(response);
-
 });
+
+
+router.get('*', async function (req, res) {
+    res.redirect('/api/task');
+});
+
 
 module.exports = router; 
