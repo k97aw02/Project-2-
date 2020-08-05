@@ -7,18 +7,28 @@ let db = require('../../models')
 
 // all employees 
 router.get('/', async (req, res) => {
-
     let data = await db.Employee.findAll({});
     await res.json(data);
 });
 
+router.get('/single/:id', async (req, res) => {
+    let key = req.params.id;
+    let employee = await db.Employee.findOne({ where: { id: key } });
+    await res.json(employee);
+});
+
 //post a user , route => ('api/invitation')
 router.post('/', async function (req, res) {
-    let task = await db.Employee.create({
-        task: req.body.task
-        //role_id needs to be linked here
+    let key = req.body; 
+    let newEmployee = await db.Employee.create({
+        full_name: key.full_name,
+        email: key.email,
+        salary: key.salary,
+        phone_number: key.phone_number,
+        password: key.password,
+        role_ID: key.role_ID
     });
-    await res.json(task);
+    await res.json(newEmployee);
 });
 
 // update user by id 

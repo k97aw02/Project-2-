@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
 
 router.get('/single/:id', async (req, res) => {
     let key = req.params.id;
-    let roles = await db.Task.findOne({ where: { id: key } });
-    await res.json(roles);
+    let task = await db.Task.findOne({ where: { id: key } });
+    await res.json(task);
 });
 
 //post a user , route => ('api/invitation')
@@ -48,7 +48,6 @@ router.delete('/:id', async function (req, res) {
     })
     await res.json(response);
 });
-
 
 router.get('*', async function (req, res) {
     res.redirect('/api/task');
