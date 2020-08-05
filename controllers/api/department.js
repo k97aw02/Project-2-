@@ -11,13 +11,15 @@ router.get('/', async (req, res) => {
     res.json(department);
 });
 
+router.get('/single/:id', async (req, res) => {
+    let key = req.params.id;
+    let department = await db.Department.findOne({ where: { id: key } });
+    await res.json(department);
+});
 
 //post 
 router.post('/', async function (req, res) {
-    let department = await db.Department.create({
-        name: req.body.name,
-        //role_id needs to be linked here after creating the role
-    });
+    let department = await db.Department.create({name: req.body.name});
     await res.json(department);
 });
 
@@ -33,9 +35,7 @@ router.put('/:id', async function (req, res) {
             },
         },
     )
-
     res.json(response);
-
 });
 
 // delete Task by id 
@@ -49,6 +49,11 @@ router.delete('/:id', async function (req, res) {
     await res.json(response);
 
 });
+
+router.get('*', async function (req, res) {
+    res.redirect('/api/department');
+});
+
 
 
 module.exports = router; 

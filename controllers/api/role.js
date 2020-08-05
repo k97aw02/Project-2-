@@ -20,4 +20,11 @@ router.post('/', function (req, res) {
 });
 
 
+// [DONE]
+router.get('*', async function (req, res) {
+  res.redirect('/api/role');
+});
+
+
+
 module.exports = router; 

@@ -10,6 +10,12 @@ router.get('/', async (req, res) => {
     await res.send(data);
 });
 
+// [DONE]
+router.get('*', async function (req, res) {
+    res.redirect('/api/employeeTask');
+});
+
+
 
 
 module.exports = router; 
