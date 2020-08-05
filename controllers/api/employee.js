@@ -5,10 +5,12 @@ const employee = require('./employee');
 /// require the db to pull data from models 
 let db = require('../../models')
 
-// all employees 
+// all employees and task
 router.get('/', async (req, res) => {
-    let data = await db.Employee.findAll({});
-    await res.json(data);
+    // let data = await db.Employee.findAll({});
+    // await res.json(data);
+    let data = await db.Employee.findAll({ include: [db.Task] });
+    await res.send(data);
 });
 
 router.get('/single/:id', async (req, res) => {
