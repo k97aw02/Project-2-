@@ -65,11 +65,9 @@ module.exports = function (sequelize, DataTypes) {
             freezeTableName: true,
             // let add the password hash
             hooks: {
-                afterValidate: function (res) {
-                    // let salt = bcrypt.genSaltSync(10);
-                    res.password = bcrypt.hashSync(res.password, 10);
-
-                    console.log(`this message happens after validation ${res.password}`);
+                afterValidate: function (user) {
+                    user.password = bcrypt.hashSync(user.password, 10);
+                    // console.log(`this message happens after validation ${res.password}`);
                 }
             }
         }
