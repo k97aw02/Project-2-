@@ -8,8 +8,10 @@ module.exports = function (sequelize, DataTypes) {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    notEmpty: true,
-                    // msg: "Please enter your name",
+                    notEmpty:{
+                        args: true,
+                        msg: "Please enter your name"
+                    }
                 },
             },
             email: {
@@ -17,15 +19,24 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false,
                 // unique: true,
                 validate: {
-                    isEmail: true,
-                    notEmpty: true,
+                    isEmail: {
+                        args: true,
+                        msg: "please enter a valid email"
+                    },
+                    notEmpty: {
+                        args: true,
+                        msg:"email cannot be left empty"
+                    }
                 },
             },
             salary: {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    is: /^[0-9]*$/,
+                    is: {
+                        args: /^[0-9]*$/,
+                        msg: "salary should only include numbers"
+                    }
                 },
             },
             phone_number: {
@@ -33,20 +44,27 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: true,
                 unique: true,
                 validate: {
-                    // notEmpty: true,
-                    is: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
-                },
+                    is:/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
+                    len: {
+                        args: [10],
+                        msg: "phone number needs to be at least 10 characters"
+                    }
+                }
             },
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    notEmpty: true
+                    notEmpty: {
+                        args: true,
+                        msg:"password cannot be left empty"
+                    }
                 }
             },
         },
         {
             freezeTableName: true,
+            // let add the password hash
             // hooks: {
             //     afterValidate: function () {
             //         console.log(`this message happens after validation ${res}`);
