@@ -42,7 +42,7 @@ module.exports = function (sequelize, DataTypes) {
             phone_number: {
                 type: DataTypes.STRING,
                 allowNull: true,
-                // unique could be something we could add later 
+                // unique could be added later 
                 validate: {
                     is: {
                         args: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
@@ -66,6 +66,9 @@ module.exports = function (sequelize, DataTypes) {
             // let add the password hash
             hooks: {
                 afterValidate: function (res) {
+                    // let salt = bcrypt.genSaltSync(10);
+                    res.password = bcrypt.hashSync(res.password, 10);
+
                     console.log(`this message happens after validation ${res.password}`);
                 }
             }
