@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Employee_Task = sequelize.define("Employee_Task",
+  const Employee_Task = sequelize.define(
+    "Employee_Task",
     {
       completed_date: {
         type: DataTypes.STRING,
@@ -17,12 +18,3 @@ module.exports = (sequelize, DataTypes) => {
 
   return Employee_Task;
 };
-
-// create table Employee_Tasks(
-//     id INTEGER  not null auto_increment PRIMARY KEY,
-//     created_date timestamp,
-//     completed date,
-//     employeeId  int,
-//     foreign key (employeeId) references employee(id),
-//     tasksId  int,
-//     foreign key (tasksId) references Tasks(id)
