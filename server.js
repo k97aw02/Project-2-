@@ -23,9 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
 app.use(express.static('public'));
-}; 
+// }; 
 
 // Add routes, both API and html
 app.use(routes);
