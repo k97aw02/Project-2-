@@ -8,7 +8,18 @@ let db = require('../../models')
 router.get('/', (req, res) => {
     res.send('hello this is the employeeTask controller'); 
 
-    
+    db.Employee_Task.findAll({
+        include: [
+          {
+            model: Employee,
+            where: {}
+          },
+          {
+            model: Task,
+            where: {} 
+          }
+        ]
+      });
 
 }); 
 
