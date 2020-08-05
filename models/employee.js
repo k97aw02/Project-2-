@@ -47,11 +47,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         {
             freezeTableName: true,
-            hooks: {
-                afterValidate: function () {
-                    console.log(`this message happens after validation ${res}`);
-                }
-            }
+            // hooks: {
+            //     afterValidate: function () {
+            //         console.log(`this message happens after validation ${res}`);
+            //     }
+            // }
         }
     );
 

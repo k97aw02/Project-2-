@@ -20,15 +20,22 @@ router.get('/single/:id', async (req, res) => {
 //post a user , route => ('api/invitation')
 router.post('/', async function (req, res) {
     let key = req.body; 
-    let newEmployee = await db.Employee.create({
+    console.log(key)
+    db.Employee.create({
         full_name: key.full_name,
         email: key.email,
-        salary: key.salary,
+        salary: key.salary, // okay this should pass now 
         phone_number: key.phone_number,
         password: key.password,
         role_ID: key.role_ID
-    });
-    await res.json(newEmployee);
+    })
+    .then((response) => {
+        res.json(response);
+    })
+    .catch((err) => { 
+        console.log(err.message); 
+    })
+ 
 });
 
 // update user by id 
