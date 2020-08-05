@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    notEmpty:{
+                    notEmpty: {
                         args: true,
                         msg: "Please enter your name"
                     }
@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
                     },
                     notEmpty: {
                         args: true,
-                        msg:"email cannot be left empty"
+                        msg: "email cannot be left empty"
                     }
                 },
             },
@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    is: {
+                    isNumeric: {
                         args: /^[0-9]*$/,
                         msg: "salary should only include numbers"
                     }
@@ -42,12 +42,11 @@ module.exports = function (sequelize, DataTypes) {
             phone_number: {
                 type: DataTypes.STRING,
                 allowNull: true,
-                unique: true,
+                // unique could be something we could add later 
                 validate: {
-                    is:/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
-                    len: {
-                        args: [10],
-                        msg: "phone number needs to be at least 10 characters"
+                    is: {
+                        args: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
+                        msg: "please enter a valid phone number"
                     }
                 }
             },
@@ -57,7 +56,7 @@ module.exports = function (sequelize, DataTypes) {
                 validate: {
                     notEmpty: {
                         args: true,
-                        msg:"password cannot be left empty"
+                        msg: "password cannot be left empty"
                     }
                 }
             },
@@ -65,11 +64,11 @@ module.exports = function (sequelize, DataTypes) {
         {
             freezeTableName: true,
             // let add the password hash
-            // hooks: {
-            //     afterValidate: function () {
-            //         console.log(`this message happens after validation ${res}`);
-            //     }
-            // }
+            hooks: {
+                afterValidate: function (res) {
+                    console.log(`this message happens after validation ${res.password}`);
+                }
+            }
         }
     );
 
@@ -89,7 +88,7 @@ module.exports = function (sequelize, DataTypes) {
             as: 'employee',
             foreignKey: {
                 name: 'manage_Id',
-                allowNull: true
+                allowNull: true,
             }
         });
 

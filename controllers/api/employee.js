@@ -25,7 +25,7 @@ router.post('/', async function (req, res) {
         let employee = await db.Employee.create({
             full_name: key.full_name,
             email: key.email,
-            salary: key.salary, // okay this should pass now 
+            salary: key.salary, 
             phone_number: key.phone_number,
             password: key.password,
             role_ID: key.role_ID
@@ -33,7 +33,7 @@ router.post('/', async function (req, res) {
         res.json(employee);
 
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         res.send(error.message);
     }
 });
