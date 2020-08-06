@@ -1,6 +1,8 @@
 // instance of the router 
 const router = require('express').Router();
 const employee = require('./employee');
+const bcrypt = require('bcryptjs');
+
 
 /// require the db to pull data from models 
 let db = require('../../models')
@@ -19,7 +21,7 @@ router.get('/single/:id', async (req, res) => {
     await res.json(employee);
 });
 
-//post a user , route => ('api/invitation')
+// registration route 
 router.post('/', async function (req, res) {
     try {
         let key = req.body;
@@ -27,12 +29,43 @@ router.post('/', async function (req, res) {
         let employee = await db.Employee.create({
             full_name: key.full_name,
             email: key.email,
-            salary: key.salary, 
+            salary: key.salary,
             phone_number: key.phone_number,
             password: key.password,
             role_ID: key.role_ID
         });
         res.json(employee);
+
+    } catch (error) {
+        console.log(error);
+        res.send(error.message);
+    }
+});
+
+// login route credentials
+router.post('/', async function (req, res) {
+    try {
+        let userCredential = req.body;
+        let password = userCredential.password;
+        let email = userCredential.email;
+
+        //comapre them to a user 
+        // if it doesn't error message
+
+        let employee = await db.Employee.findOne({
+            email: key.email,
+            password: key.password,
+        });
+
+        // we render the next the next page
+        if (email === employee.email && bcrypt.compareSync(password, employee.password)) {
+            // show home page
+            // HANDLEBARS RENDER 
+            // res.render("index", hbsObject);
+        } else {
+            // try again 
+            res.send('please try again the email/password is not valid'); 
+        }
 
     } catch (error) {
         console.log(error);
