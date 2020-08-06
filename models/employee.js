@@ -8,8 +8,10 @@ module.exports = function (sequelize, DataTypes) {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    notEmpty: true,
-                    // msg: "Please enter your name",
+                    notEmpty: {
+                        args: true,
+                        msg: "Please enter your name"
+                    }
                 },
             },
             email: {
@@ -17,39 +19,55 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false,
                 // unique: true,
                 validate: {
-                    isEmail: true,
-                    notEmpty: true,
+                    isEmail: {
+                        args: true,
+                        msg: "please enter a valid email"
+                    },
+                    notEmpty: {
+                        args: true,
+                        msg: "email cannot be left empty"
+                    }
                 },
             },
             salary: {
                 type: DataTypes.STRING,
                 allowNull: true,
                 validate: {
-                    is: /^[0-9]*$/,
+                    isNumeric: {
+                        args: /^[0-9]*$/,
+                        msg: "salary should only include numbers"
+                    }
                 },
             },
             phone_number: {
                 type: DataTypes.STRING,
                 allowNull: true,
-                unique: true,
+                // unique could be added later 
                 validate: {
-                    // notEmpty: true,
-                    is: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
-                },
+                    is: {
+                        args: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g,
+                        msg: "please enter a valid phone number"
+                    }
+                }
             },
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    notEmpty: true
+                    notEmpty: {
+                        args: true,
+                        msg: "password cannot be left empty"
+                    }
                 }
             },
         },
         {
             freezeTableName: true,
+            // let add the password hash
             hooks: {
-                afterValidate: function () {
-                    console.log(`this message happens after validation ${res}`);
+                afterValidate: function (user) {
+                    user.password = bcrypt.hashSync(user.password, 10);
+                    // console.log(`this message happens after validation ${res.password}`);
                 }
             }
         }
@@ -71,7 +89,7 @@ module.exports = function (sequelize, DataTypes) {
             as: 'employee',
             foreignKey: {
                 name: 'manage_Id',
-                allowNull: true
+                allowNull: true,
             }
         });
 

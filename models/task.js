@@ -17,6 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
+  
   Task.associate = function (models) {
     Task.belongsToMany(models.Employee, { through: models.Employee_Task });
   };
