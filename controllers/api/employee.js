@@ -42,36 +42,7 @@ router.post('/', async function (req, res) {
     }
 });
 
-// login route credentials
-router.post('/', async function (req, res) {
-    try {
-        let userCredential = req.body;
-        let password = userCredential.password;
-        let email = userCredential.email;
 
-        //comapre them to a user 
-        // if it doesn't error message
-
-        let employee = await db.Employee.findOne({
-            email: key.email,
-            password: key.password,
-        });
-
-        // we render the next the next page
-        if (email === employee.email && bcrypt.compareSync(password, employee.password)) {
-            // show home page
-            // HANDLEBARS RENDER 
-            // res.render("index", hbsObject);
-        } else {
-            // try again 
-            res.send('please try again the email/password is not valid'); 
-        }
-
-    } catch (error) {
-        console.log(error);
-        res.send(error.message);
-    }
-});
 
 // update user by id 
 router.put('/:id', async function (req, res) {
