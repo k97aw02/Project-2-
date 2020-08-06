@@ -1,14 +1,9 @@
-const mysql = require('mysql');
-const express = require('express');
 
-
-// Grab Elements from FORM
-
-let name = getElementById('name');
-let email = getElementById('email');
-let password = getElementById('psw');
-let repeatpassword = getElementById('psw-repeat');
-
+// // Grab Elements from FORM
+let name = document.getElementById('name');
+let email = document.getElementById('email');
+let password = document.getElementById('psw');
+let repeatpassword = document.getElementById('psw-repeat');
 
 
 function registration() {
@@ -72,6 +67,7 @@ function registration() {
 			   window.location = "#"; 
 		}
 }
+
 
 registration();
 
