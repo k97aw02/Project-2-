@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const express = require('express');
 
+
 // Grab Elements from FORM
 
 let name = getElementById('name');
@@ -40,11 +41,11 @@ function registration() {
 		{
 			alert('User name field required only alphabet characters');
 		}
-		else if(pwd=='')
+		else if(password=='')
 		{
 			alert('Please enter Password');
 		}
-		else if(cpwd=='')
+		else if(repeatpassword=='')
 		{
 			alert('Enter Confirm Password');
 		}
@@ -52,17 +53,17 @@ function registration() {
 		{
 			alert ('Upper case, Lower case, Special character and Numeric letter are required in Password filed');
 		}
-		else if(pwd != cpwd)
+		else if(password != repeatpassword)
 		{
 			alert ('Password not Matched');
 		}
-		else if(document.getElementById("t5").value.length < 6)
+		else if(document.getElementById("psw").value.length < 6)
 		{
 			alert ('Password minimum length is 6');
 		}
-		else if(document.getElementById("t5").value.length > 12)
+		else if(document.getElementById("psw").value.length > 12)
 		{
-			alert ('Password max length is 12');
+			alert ('Password max length is 12');``
 		}
 		else
 		{				                            

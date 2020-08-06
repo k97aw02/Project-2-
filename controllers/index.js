@@ -1,18 +1,15 @@
 // express will hit this index route first before hitting anything else 
-const path = require('path');
+
+// make a new router 
 const router = require('express').Router();
-// const apiRoutes = require('./api');
-// const htmlRoutes = require('./api');
 
-// API Routes
-// router.use('/api', apiRoutes);
+const apiRoutes = require('./api');
+const htmlRoutes = require('./htmlRoutes');
 
-// HTML Routes 
-// router.use('/', htmlRoutes);
 
-// If no API or html routes are hit send to 
-router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, '../public/login.html'));
-});
+router.use('/api', apiRoutes);
+router.use('/', htmlRoutes);
 
-module.exports = router;
+
+module.exports = router; 
+
