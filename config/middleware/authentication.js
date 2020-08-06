@@ -14,4 +14,6 @@ module.exports = function (req, res, next) {
 
 
 
-   /// aunthentication for cheking pass // and then to let you use the route web token authorization
+/// aunthentication for cheking pass checking to see if the person is who they say they are
+
+// and then to let you use the route web token authorization

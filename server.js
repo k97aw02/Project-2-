@@ -6,7 +6,9 @@ const routes = require('./controllers');
 const app = express();
 // require morgan for testing purposes
 const morgan = require('morgan');
-
+// using a web token 
+const jwt = require('jsonwebtoken');
+const authorize = require('./config/middleware/authorization');
 
 // short circuit PORT 
 const PORT = process.env.PORT || 3001;
@@ -15,6 +17,25 @@ let db = require('./models');
 
 // use morgan 
 app.use(morgan('dev'));
+
+
+// request token 
+app.get('/token', authorize(), (req, res) => {
+    // payload is the message being sent 
+    const payload = {
+        name: 'erik',
+        scopes: ['customer:create']
+    };
+    const token = jwt.sign(payload, 'my secret key erik');
+
+    // // a way to do it with expiration 
+    // jwt.sign({
+    //     exp: Math.floor(Date.now() / 1000) + (60 * 60),
+    //     data: payload
+    //   }, 'secret');
+
+    res.send(token); 
+});
 
 // Define middleware here
 // for form data 

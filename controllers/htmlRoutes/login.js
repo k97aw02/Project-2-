@@ -8,6 +8,14 @@ router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../../public/login.html'));
 });
 
+// jeff *****
+/// use validation on the front-end
+/// name, password, not empty, 
+
+
+// work on authentication with the login ***** 
+// this is priority 
+
 // login route credentials authentication
 router.post('/', async function (req, res) {
     try {
@@ -40,6 +48,16 @@ router.post('/', async function (req, res) {
         res.send(error.message);
     }
 });
+
+// validation here on the controller 
+router.post('/', async function (req, res) {
+    db.Employee.create({
+
+    })
+    // send this to the user 
+}); 
+
+
 
 
 module.exports = router;
