@@ -20,10 +20,11 @@ router.post("/", passport.authenticate("local"), function (req, res) {
     res.json(req.user);
 });
 
-// using the data that sent to the req to pull up
+// using the data that was sent to the req to pull up
+// throught this guy ^^^^^^^^ up there
 //** the user info **\\
 router.get("/user_data", function (req, res) {
-    console.log('this is the req', req);
+    //// console.log('this is the req', req);
     if (!req.user) {
         // The user is not logged in, send back an empty object
         res.json({});

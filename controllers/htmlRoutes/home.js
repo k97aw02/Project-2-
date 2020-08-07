@@ -1,10 +1,11 @@
 const router = require("express").Router(); 
 const path = require('path'); 
+var isAuthenticated = require('../../config/middleware/isAuthenitcated')
 
 // we need to require the models in here 
 
 // If no API or html routes are hit send to 
-router.get('/', function (req, res) {
+router.get('/',isAuthenticated, function (req, res) {
     // res.sendFile(path.join(__dirname, '../../public/home.html'));
     console.log('inside the get for home')
     /// with orm model 

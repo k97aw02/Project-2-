@@ -1,9 +1,8 @@
 const router = require("express").Router();
 const db = require('../../models');
-const { route } = require("./employee");
 
 
-router.get('/signup', (req, res) => {
+router.get('/', (req, res) => {
     res.send('this is the api signup route'); 
 })
 
