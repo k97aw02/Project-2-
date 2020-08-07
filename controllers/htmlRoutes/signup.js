@@ -15,7 +15,8 @@ router.post("/signup", function (req, res) {
             console.log('We just saved ?????', data)
 
             // dashboard home paged
-            res.redirect("/api/employee");
+          res.json(data); 
+            
 
         })
         .catch(function (err) {

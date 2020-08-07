@@ -15,6 +15,9 @@ const passport = require("./config/passport");
 // require isAuthorize middleware 
 //// const authorize = require('./config/middleware/authorization');
 
+// ! Set Handlebars.
+const exphbs = require("express-handlebars");
+
 // node extension better comments .1 
 
 // short circuit PORT 
@@ -53,12 +56,19 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === 'production') {
 app.use(express.static('public'));
+// app.use(express.static('public/views'));
 // }; 
+
 
 // middleware for session token 
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+/// handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 
 // Using routes, both API and html
 app.use(routes);

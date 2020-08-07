@@ -5,7 +5,12 @@ const path = require('path');
 
 // If no API or html routes are hit send to 
 router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../../public/home.html'));
+    // res.sendFile(path.join(__dirname, '../../public/home.html'));
+    console.log('inside the get for home')
+    /// with orm model 
+    // lets serve some data about the user 
+
+    res.render('home'); 
 });
 
 // switch this over to handlebars

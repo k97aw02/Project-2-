@@ -7,21 +7,26 @@ var isAuthenticated = require('../../config/middleware/isAuthenitcated')
 // we need to require the models in here 
 
 // If no API or html routes are hit send to 
-router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../../public/login.html'));
+// router.get('/', function (req, res) {
+//     res.sendFile(path.join(__dirname, '../../public/login.html'));
+// });
+
+console.log('in the login file')
+
+
+router.get("/", function (req, res) {
+    console.log('sending the render index to the page')
+    // cat.all(function (data) {
+    //     var hbsObject = {
+    //         cats: data
+    //     };
+    //     console.log(hbsObject);
+    //     // THIS IS WHERE we send back the data
+    // });
+    // ? render the login page to for the user to see 
+    // ** this is rendering the login page !!!!!!!
+    res.render("index");
 });
-
-
-router.get("/", function(req, res) {
-    cat.all(function(data) {
-      var hbsObject = {
-        cats: data
-      };
-      console.log(hbsObject);
-    // THIS IS WHERE we send back the data
-      res.render("index", hbsObject);
-    });
-  });
 
 
 
