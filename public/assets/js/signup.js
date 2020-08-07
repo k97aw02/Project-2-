@@ -9,7 +9,7 @@ $("#signup-button").on('click', function (event) {
     //// diving into the codebase in about 3 hour chunks 
     // post for registration
     // post for login
-    $.ajax("/signup", {
+    $.ajax("/api/signup", {
         type: 'POST',
         data: { email: email, password: password }
     })
@@ -19,13 +19,12 @@ $("#signup-button").on('click', function (event) {
             $("#password").val('');
 
             console.log('about to replace')
-            // serving the new page
+            // * serving the new page to the user 
             window.location.replace("/home");
             // location.reload
             ////console.log("we got this back from the route!!", response)
-            //* how to serve the new page to the user 
         })
         .catch((err) => {
-
+            console.log(err,'there was an error in the signup page')
         });
 })

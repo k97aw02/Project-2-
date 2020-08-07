@@ -13,6 +13,4 @@ router.get('/', function (req, res) {
     res.render('home'); 
 });
 
-// switch this over to handlebars
-
 module.exports = router;
