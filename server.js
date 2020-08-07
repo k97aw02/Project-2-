@@ -7,8 +7,15 @@ const app = express();
 // require morgan for testing purposes
 const morgan = require('morgan');
 // using a web token 
-const jwt = require('jsonwebtoken');
-const authorize = require('./config/middleware/authorization');
+//// const jwt = require('jsonwebtoken');
+// requiring session
+const session = require("express-session");
+// require passport library
+const passport = require("./config/passport");
+// require isAuthorize middleware 
+//// const authorize = require('./config/middleware/authorization');
+
+// node extension better comments .1 
 
 // short circuit PORT 
 const PORT = process.env.PORT || 3001;
@@ -19,23 +26,23 @@ let db = require('./models');
 app.use(morgan('dev'));
 
 
-// request token 
-app.get('/token', authorize(), (req, res) => {
-    // payload is the message being sent 
-    const payload = {
-        name: 'erik',
-        scopes: ['customer:create']
-    };
-    const token = jwt.sign(payload, 'my secret key erik');
+// // request token 
+// app.get('/token', authorize(), (req, res) => {
+//     // payload is the message being sent 
+//     const payload = {
+//         name: 'erik',
+//         scopes: ['customer:create']
+//     };
+//     const token = jwt.sign(payload, 'my secret key erik');
 
-    // // a way to do it with expiration 
-    // jwt.sign({
-    //     exp: Math.floor(Date.now() / 1000) + (60 * 60),
-    //     data: payload
-    //   }, 'secret');
+//     // // a way to do it with expiration 
+//     // jwt.sign({
+//     //     exp: Math.floor(Date.now() / 1000) + (60 * 60),
+//     //     data: payload
+//     //   }, 'secret');
 
-    res.send(token); 
-});
+//     res.send(token); 
+// });
 
 // Define middleware here
 // for form data 
@@ -48,10 +55,14 @@ app.use(express.json());
 app.use(express.static('public'));
 // }; 
 
-// Add routes, both API and html
+// middleware for session token 
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Using routes, both API and html
 app.use(routes);
 
-// app.use
 
 // Start the API server
 // ADD SEQUELIZE HERE TO CONNECT TO YOUR DB

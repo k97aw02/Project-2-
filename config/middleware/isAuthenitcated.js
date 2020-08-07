@@ -5,7 +5,8 @@ module.exports = function (req, res, next) {
         return next();
     }
 
-    // if you are a manager then you can see other user profiles 
+    // if you are a manager then you can see other user profiles
+    // (req.user.manager_id)? next(): 
 
     // If the user isn't logged in, redirect them to the login page
     return res.redirect("/");
