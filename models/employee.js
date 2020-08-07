@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
         {
             full_name: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
                 validate: {
                     notEmpty: {
                         args: true,
@@ -64,14 +64,23 @@ module.exports = function (sequelize, DataTypes) {
         {
             freezeTableName: true,
             // let add the password hash
-            hooks: {
-                afterValidate: function (user) {
-                    user.password = bcrypt.hashSync(user.password, 10);
-                    // console.log(`this message happens after validation ${res.password}`);
-                }
-            }
+            // hooks: {
+            //     afterValidate: function (user) {
+            //         user.password = bcrypt.hashSync(user.password, 10);
+            //         // console.log(`this message happens after validation ${res.password}`);
+            //     }
+            // }
         }
     );
+
+    Employee.prototype.validPassword = function (password) {
+        return bcrypt.compareSync(password, this.password);
+    };
+    // Hooks are automatic methods that run during various phases of the User Model lifecycle
+    // In this case, before a User is created, we will automatically hash their password
+    Employee.addHook("beforeCreate", function (user) {
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    });
 
     Employee.associate = function (models) {
 

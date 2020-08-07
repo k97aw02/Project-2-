@@ -6,18 +6,19 @@ const routes = require('./controllers');
 const app = express();
 // require morgan for testing purposes
 const morgan = require('morgan');
-//require middleware
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const flash = require('connect-flash');
-// lets you pass a secret string
-const cookieParser = require('cookie-parser');
-// authentication 
-const passport = require('passport');
- 
-const registration = require('./public/assets/js/registration');
+// using a web token 
+//// const jwt = require('jsonwebtoken');
+// requiring session
+const session = require("express-session");
+// require passport library
+const passport = require("./config/passport");
+// require isAuthorize middleware 
+//// const authorize = require('./config/middleware/authorization');
 
+// ! Set Handlebars.
+const exphbs = require("express-handlebars");
 
+// node extension better comments .1 
 
 // short circuit PORT 
 const PORT = process.env.PORT || 3306;
@@ -27,22 +28,23 @@ let db = require('./models');
 // use morgan 
 app.use(morgan('dev'));
 
-//use cookie parser
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({
-    extended:true
-}));
+// // request token 
+// app.get('/token', authorize(), (req, res) => {
+//     // payload is the message being sent 
+//     const payload = {
+//         name: 'erik',
+//         scopes: ['customer:create']
+//     };
+//     const token = jwt.sign(payload, 'my secret key erik');
 
-app.set('view engine', 'ejs');
-app.use(session({
-    secret: 'oooASecret',
-    resave:true,
-    saveUninitialized: true
-}));
+//     // // a way to do it with expiration 
+//     // jwt.sign({
+//     //     exp: Math.floor(Date.now() / 1000) + (60 * 60),
+//     //     data: payload
+//     //   }, 'secret');
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+//     res.send(token); 
+// });
 
 
 // Define middleware here
@@ -54,12 +56,23 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === 'production') {
 app.use(express.static('public'));
+// app.use(express.static('public/views'));
 // }; 
 
-// Add routes, both API and html
+
+// middleware for session token 
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+/// handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+// Using routes, both API and html
 app.use(routes);
 
-// app.use
 
 // Start the API server
 // ADD SEQUELIZE HERE TO CONNECT TO YOUR DB
