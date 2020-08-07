@@ -32,7 +32,7 @@
                     <h4 class="font-weight-bold">Create a Tasks:</h4>
                     <div class="input-group input-group-lg ">
                         <input class="form-control  input-group-lg border border-primary" id="cityInputValue"
-                            type="search" placeholder="Type City Here..." aria-label="Search">
+                            type="search" placeholder="What are we doing today..." aria-label="Search">
                     </div>
                 </div>
                 <div class="col-sm-12 mt-2">
@@ -53,38 +53,37 @@
         <!-- THE FORECAST  -->
         <div class="col-12 col-lg-9 mt-3">
             <div class="row">
-                <!-- This is the task we just created!!!-->
-                <div class=" col-12 ">
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div
-                                class="jumbotron jumbotron-fluid pb-4 pt-2 px-4 font-weight-bold  border border-primary rounded-lg">
-                                {{!-- employee-name will be here  --}}
-                                <h1 class=" text-white">Welcome, <span class="employee-name"></span>!!</h1>
-                                <h1 class="display-4"><span class="city">this just displays basic info for the user to
-                                        see</span> (<span class="day0">8/07/20</span>)</h1>
-                                <div>this will show a picture of the user if we have time </div>
-                                {{!-- the icon class gives use the pictures we need for this  --}}
-                                <div><img src="" alt="weather Icon"
-                                        class="img-fluid mt-2 icon rounded border border-warning"><span
-                                        class="description0">clear sky</span>
-                                </div>
-                                <div class="mt-3">Email : <span class="employee-name"></span></div>
-                                <div class="mt-3">name : <span class="humidity0">64</span>%</div>
-                                <div class="mt-3">Role : <span class="temp0">81</span>°F</div>
-                                <div class="mt-3">Department : <span class="temp0">81</span>°F</div>
-                            </div>
-                        </div>
+                {{!-- greetting  --}}
+                <div class=" col-9 ">
+                    <div
+                        class="jumbotron jumbotron-fluid font-weight-bold h-auto border border-primary bg-primary rounded-lg">
+                        {{!-- employee-name will be here  --}}
+                        <h1 class="text-center text-white">Welcome, <span class="employee-name"></span>!!</h1>
                     </div>
+                </div>
+                {{!-- this is the avatar  --}}
+                <div class="col-3 ">
+                    <div><img src="" alt="weather Icon" class="img-fluid icon rounded border ">
+                    </div>
+                </div>
+                <div class="col-12 bg-primary p-3 rounded font-weight-bold ">
+                    <ul class="list-group text-white">
+                        <div class="list-group-item bg-transparent ">Email : <span class="employee-name"></span></div>
+                        <div class="list-group-item bg-transparent ">name : <span class="humidity0">64</span>%</div>
+                        <div class="list-group-item bg-transparent ">Role : <span class="temp0">81</span>°F</div>
+                        <div class="list-group-item bg-transparent ">Department : <span class="temp0">81</span>°F</div>
+                    </ul>
                 </div>
             </div>
             <!-- maybe this is a list of other task that need to be done -->
-            <div class="col-12">
-                <h1 class="ml-n3">Other tasks that need to be done!</h1>
-                <div class="row d-flex justify-content-between text-center">
-                    <div
-                        class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
-                        one task
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="ml-n3 display-3 ">Tasks to be done!</h1>
+                    <div class="row d-flex justify-content-between text-center">
+                        <div
+                            class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
+                            one task
+                        </div>
                     </div>
                 </div>
             </div>
