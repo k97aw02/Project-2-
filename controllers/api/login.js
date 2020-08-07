@@ -16,7 +16,7 @@ var isAuthenticated = require('../../config/middleware/isAuthenitcated')
 
 // the authenticate local saves it in the req
 router.post("/", passport.authenticate("local"), function (req, res) {
-    console.log('returning the json req.user')
+
     res.json(req.user);
 });
 

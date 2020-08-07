@@ -2,6 +2,7 @@ const router = require("express").Router();
 const db = require('../../models');
 
 
+
 router.get('/', (req, res) => {
     res.send('this is the api signup route'); 
 })

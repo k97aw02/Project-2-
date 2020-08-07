@@ -1,50 +1,38 @@
-console.log('JS FILE IS LOADED!!!')
+$(document).ready(function() {
 
-// $("#login").on('click', async function (event) {
-//   event.preventDefault();
+  // When the form is submitted, we validate there's an email and password entered
+  $("form.login").on("submit", function(event) {
+    event.preventDefault();
 
-//   let email = $("#username").val().trim();
-//   let password = $("#password").val().trim();
-//   console.log('we got clicked!!', email, password);
-
-//   // * soft validation to check that these inputs are not empty 
-//   if (!email || !password) {
-//     return;
-//   }
-
-//   // post for registration 
-//   // post for login
-//   let response = await $.ajax("/login", { type: 'post', data: { email: email, password: password } });
+  // Getting references to our form and inputs
+  let emailInput = $("#username").val().trim();
+  let passwordInput = $("#password").val().trim();
 
 
-//   console.log("we got this back from the route!!", response)
+    if (!emailInput || !passwordInput) {
+      return;
+    }
 
-//   // received email any other info 
-//   // $('card').appemd()
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(emailInput, passwordInput);
+    emailInput.val("");
+    passwordInput.val("");
+  });
 
-// });
-
-
-/// this creates a user throught this ajax calls
-$("#signup-button").on('click', function (event) {
-  event.preventDefault();
-
-  // * make the user 
-  let email = $("#username").val().trim();
-  let password = $("#password").val().trim();
-
-  //// console.log('we got clicked!!', email, password)
-
-  // post for registration
-  // post for login
-  $.ajax("/signup", {
-    type: 'post',
-    data: { email: email, password: password }
-  })
-    .then((response) => {
-      console.log("we got this back from the route!!", response)
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  function loginUser(email, password) {
+    $.post("/api/login", {
+      email: email,
+      password: password
     })
-    .catch((err) => {
-
-    });
-})
+      .then(function(response) {
+        window.location.replace("/home");
+        // If there's an error, log the error
+        console.log(response)
+      })
+      .catch(function(err) {
+        console.log(err);
+        
+      });
+  }
+});
