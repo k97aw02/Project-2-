@@ -10,24 +10,26 @@ $(document).ready(function () {
 
 
     $('#createTask').on('click', (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
+        // * get the data from the user 
+        let userTask = $('#cityInputValue').val().trim();
 
-
-        let task = $('#cityInputValue').val().trim(); 
-
-
-        $.post("/api/login", {
-            task: task,
+        $.post("/api/task", {
+            task: userTask,
         })
-            .then(function () {
-                window.location.replace("/members");
+            .then(function (response) {
+                // ! tell the user that you have made a task
+                // todo: append the task to the html 
+
+                $("#taskCreatedAlert").text('Task Created!!!');
+
                 // If there's an error, log the error
             })
             .catch(function (err) {
-                console.log(err, 'this is the error');
+                console.log(err, 'there was an error in the ');
             });
 
 
-    }); 
+    });
 
 });
