@@ -8,6 +8,10 @@ const role = require('./role');
 const employeeTask = require('./employeeTask');
 const register = reqiure('./register');
 
+//! api login 
+const login = require('./login');
+const signup = require('./signup');
+
 
 // api routes
 router.use('/employee', employee);
@@ -16,6 +20,10 @@ router.use('/task', task);
 router.use('/role', role);
 router.use('/employeeTask', employeeTask);
 router.use('/register', register);
+
+// ! api login/registration routes
+router.use('/login', login);
+router.use('/signup', signup);
 
 
 module.exports = router;

@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Employee_Task = sequelize.define("Employee_Task",
+  const Employee_Task = sequelize.define(
+    "Employee_Task",
     {
       completed: {
         type: DataTypes.BOOLEAN,
@@ -12,4 +13,3 @@ module.exports = (sequelize, DataTypes) => {
   );
   return Employee_Task;
 };
-
