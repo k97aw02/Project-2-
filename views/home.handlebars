@@ -1,69 +1,61 @@
 {{!-- this is the new navbar  --}}
 <nav class="navbar navbar-dark bg-primary navbar-expand-lg rounded">
-    <a class="navbar-brand" href="#">Tasker</a>
+    <a class="navbar-brand " href="#">Tasker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <div class="collapse navbar-collapse justify-content-between " id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0  text-white " type="submit">Search</button>
+                <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text">Log Out</button>
+            </form>
+
+
     </div>
 </nav>
 
 
 <div class="container-fluid">
     <div class="row">
-        {{!-- these could be the cards  --}}
-        <!-- THE FORECAST  -->
+
+        <!-- PIC && STATS  -->
         <div class="col-12 col-lg-9 mt-3">
             <div class="row">
-                {{!-- greetting  --}}
-                <div class="  col-md-8 col-6 font-weight-bold h-auto border border-primary bg-primary rounded-lg  ">
-                        {{!-- employee-name will be here  --}}
-                        <div >
-                             <h5 class="text-center text-white">Welcome, <span class="employee-name"></span>!!</h5>
+                {{!-- stats && avatar--}}
+                <div class="col-12 bg-primary p-3 rounded font-weight-bold ">
+                    <div class="row">
+                        <div class="col-5 col-md-6">
+                            <div><img src="" alt="weather Icon" class=" icon rounded border "></div>
                         </div>
-                </div>
-                {{!-- this is the avatar  --}}
-                <div class="col-md-3 col-6 ">
-                    <div><img src="" alt="weather Icon" class="img-fluid icon rounded border ">
-                    </div>
-                </div>
-                <div class="col-12 bg-primary p-3 rounded font-weight-bold mt-3">
-                    <h4 class="font-weight-bold">Your Stats</h4>
-                    <ul class="list-group text-white">
-                        <div class="list-group-item bg-transparent ">Email : <span class="employee-name"></span></div>
-                        <div class="list-group-item bg-transparent ">name : <span class="humidity0">64</span>%</div>
-                        <div class="list-group-item bg-transparent ">Role : <span class="temp0">81</span>°F</div>
-                        <div class="list-group-item bg-transparent ">Department : <span class="temp0">81</span>°F</div>
-                    </ul>
-                </div>
-            </div>
-            <!-- maybe this is a list of other task that need to be done -->
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="ml-n3 display-3 ">Tasks to be done!</h1>
-                    <div class="row d-flex justify-content-between text-center">
-                        <div
-                            class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
-                            one task
+                        <div class="col-4">
+                            <h4 class="font-weight-bold">Welcome <span class="employee-name"></span>!! </h4>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <ul class="list-group text-white">
+                                <div class="list-group-item bg-transparent ">Email : <span class="employee-name"></span>
+                                </div>
+                                <div class="list-group-item bg-transparent ">name : <span class="humidity0"></span>
+                                </div>
+                                <div class="list-group-item bg-transparent ">Role : <span class="temp0"></span>
+                                </div>
+                                <div class="list-group-item bg-transparent ">Department : <span class="temp0"></span>
+                                </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-                <!-- SEARCH BAR-->
+
+        <!-- SEARCH BAR-->
         <div class="col-12 col-lg-3 mt-3">
             <div class="row ">
                 <!-- create a task and maybe throw in search a task later -->
@@ -76,7 +68,7 @@
                 </div>
                 <div class="col-sm-12 mt-2">
                     <!-- SEARCH BUTTON  -->
-                    <button class="btn btn-lg btn-block btn-primary my-2 my-sm-0 px-5" id="searchCity"
+                    <button class="btn btn-lg btn-block btn-primary my-2 my-sm-0 px-5" id="createTask"
                         type="submit">Submit</button>
                 </div>
                 <!-- searched cities HISTORY --> {{!-- maybe we can do previous tasks here if we have time --}}
@@ -88,5 +80,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12 col-lg-9 mt-3">
+            <!-- create a task  -->
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="ml-n3 display-5 ">Tasks to be done!</h1>
+                    <div class="row d-flex justify-content-between text-center">
+                        <div
+                            class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
+                            one task
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="/assets/js/employeePage.js"></script>

@@ -39,6 +39,14 @@ router.get("/user_data", function (req, res) {
 });
 
 
+// logout functionality 
+// Route for logging user out
+router.get("/logout", function (req, res) {
+    // login out session 
+    req.logout();
+    res.redirect("/");
+});
+
 
 // this is a private route 
 router.get('/privateTest', isAuthenticated, function (req, res) {

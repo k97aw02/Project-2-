@@ -13,7 +13,7 @@ $(document).ready(function () {
             }
         });
 
-        let avatar = 'https://api.adorable.io/avatars/400/';
+        let avatar = 'https://api.adorable.io/avatars/100/';
         let customeIcon = avatar + user;
 
         $(".icon").attr('src', customeIcon);
