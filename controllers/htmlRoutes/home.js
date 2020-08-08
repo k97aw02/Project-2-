@@ -1,19 +1,12 @@
-const router = require("express").Router();
-const path = require("path");
 
-router.get("./home", function (req, res) {
-  homepage.all(function (data) {
-    var homeObject = {
-      homepage: data,
-    };
-    console.log(homeObject);
-    res.render("home", homeObject);
-  });
-});
+const router = require("express").Router(); 
+const path = require('path'); 
+var isAuthenticated = require('../../config/middleware/isAuthenitcated')
+
 
 
 // If no API or html routes are hit send to 
-router.get('/', function (req, res) {
+router.get('/',isAuthenticated, function (req, res) {
     // res.sendFile(path.join(__dirname, '../../public/home.html'));
     console.log('inside the get for home')
     /// with orm model 
@@ -23,6 +16,6 @@ router.get('/', function (req, res) {
 
 });
 
-// switch this over to handlebars
 
 module.exports = router;
+

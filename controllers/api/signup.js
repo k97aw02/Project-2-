@@ -1,12 +1,16 @@
 const router = require("express").Router();
-const path = require('path');
-var db = require('../../models')
+const db = require('../../models');
 
 
+
+router.get('/', (req, res) => {
+    res.send('this is the api signup route'); 
+})
 
 // * this will create a new user
-router.post("/signup", function (req, res) {
+router.post("/", function (req, res) {
     console.log('We hit hte sign up route!!')
+    // ! here we take what the user gave us and create a new user
     db.Employee.create({
         email: req.body.email,
         password: req.body.password
@@ -15,8 +19,9 @@ router.post("/signup", function (req, res) {
             console.log('We just saved ?????', data)
 
             // dashboard home paged
-          res.json(data); 
-            
+            //   res.json(data); 
+            // redirect to api to login
+            res.redirect(307, '/api/login');
 
         })
         .catch(function (err) {

@@ -1,29 +1,60 @@
 {{!-- this is the new navbar  --}}
-<nav class="navbar navbar-dark bg-primary  navbar-expand-lg">
-    <a class="navbar-brand" href="#">Tasker</a>
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg rounded">
+    <a class="navbar-brand " href="#">Tasker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <div class="collapse navbar-collapse justify-content-between " id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0  text-white " type="submit">Search</button>
+                <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text">Log Out</button>
+            </form>
+
+
     </div>
 </nav>
 
 
 <div class="container-fluid">
     <div class="row">
+
+        <!-- PIC && STATS  -->
+        <div class="col-12 col-lg-9 mt-3">
+            <div class="row">
+                {{!-- stats && avatar--}}
+                <div class="col-12 bg-primary p-3 rounded font-weight-bold ">
+                    <div class="row">
+                        <div class="col-5 col-md-6">
+                            <div><img src="" alt="weather Icon" class=" icon rounded border "></div>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="font-weight-bold">Welcome <span class="employee-name"></span>!! </h4>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <ul class="list-group text-white">
+                                <div class="list-group-item bg-transparent ">Email : <span class="employee-name"></span>
+                                </div>
+                                <div class="list-group-item bg-transparent ">name : <span class="humidity0"></span>
+                                </div>
+                                <div class="list-group-item bg-transparent ">Role : <span class="temp0"></span>
+                                </div>
+                                <div class="list-group-item bg-transparent ">Department : <span class="temp0"></span>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- SEARCH BAR-->
         <div class="col-12 col-lg-3 mt-3">
             <div class="row ">
@@ -32,12 +63,12 @@
                     <h4 class="font-weight-bold">Create a Tasks:</h4>
                     <div class="input-group input-group-lg ">
                         <input class="form-control  input-group-lg border border-primary" id="cityInputValue"
-                            type="search" placeholder="Type City Here..." aria-label="Search">
+                            type="search" placeholder="What are we doing today..." aria-label="Search">
                     </div>
                 </div>
                 <div class="col-sm-12 mt-2">
                     <!-- SEARCH BUTTON  -->
-                    <button class="btn btn-lg btn-block btn-primary my-2 my-sm-0 px-5" id="searchCity"
+                    <button class="btn btn-lg btn-block btn-primary my-2 my-sm-0 px-5" id="createTask"
                         type="submit">Submit</button>
                 </div>
                 <!-- searched cities HISTORY --> {{!-- maybe we can do previous tasks here if we have time --}}
@@ -49,43 +80,22 @@
                 </div>
             </div>
         </div>
-        {{!-- these could be the cards  --}}
-        <!-- THE FORECAST  -->
+
         <div class="col-12 col-lg-9 mt-3">
+            <!-- create a task  -->
             <div class="row">
-                <!-- This is the task we just created!!!-->
-                <div class=" col-12 ">
-                    <div class="row">
-                        <div class="col-12 ">
-                            <div
-                                class="jumbotron jumbotron-fluid pb-4 pt-2 px-4 font-weight-bold  border border-primary rounded-lg">
-                                <h1 class=" text-white">Welcome name!! <span class=" text-white" id="currentDay">
-                                        display the current time here</span></h1>
-                                <h1 class="display-4"><span class="city">this just displays basic info for the user to
-                                        see</span> (<span class="day0">8/07/20</span>)</h1>
-                                <div>this will show a picture of the user if we have time </div>
-                                {{!-- the icon class gives use the pictures we need for this  --}}
-                                <div><img src="http://openweathermap.org/img/wn/01n@2x.png" alt="weather Icon"
-                                        class="img-fluid mt-2 icon1 rounded border border-warning"><span
-                                        class="description0">clear sky</span>
-                                </div>
-                                <div class="mt-3">Email : <span class="wind">10.5</span> MPH</div>
-                                <div class="mt-3">name : <span class="humidity0">64</span>%</div>
-                                <div class="mt-3">Role : <span class="temp0">81</span>°F</div>
-                                <div class="mt-3">Department : <span class="temp0">81</span>°F</div>
-                            </div>
+                <div class="col-12">
+                    <h1 class="ml-n3 display-5 ">Tasks to be done!</h1>
+                    <div class="row d-flex justify-content-between text-center">
+                        <div
+                            class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
+                            one task
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- maybe this is a list of other task that need to be done -->
-            <div class="col-12">
-                <h1 class="ml-n3">Other tasks that need to be done!</h1>
-                <div class="row d-flex justify-content-between text-center">
-                    <div class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
-                    one task
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
+    <script src="/assets/js/employeePage.js"></script>
+    <script src="/assets/js/createTask.js"></script>
