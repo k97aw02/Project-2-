@@ -27,50 +27,56 @@ $(document).ready(function () {
                 // * let the user know that the task was created 
                 $("#taskCreatedAlert").text('Task Created!!!');
                 // * clear the value in the box 
-               $("#cityInputValue").val('');
+                $("#cityInputValue").val('');
 
                 console.log(response);
 
                 //!maybe a settimout 
                 // todo: set timeout to clear the message when it's done
 
-                
-                // updateUserTask();
-             
+
+                updateUserTaskList();
+
             })
             .catch(function (err) {
                 console.log(err, 'there was an error in the ');
             });
 
-
     });
 
 
     // update once a new task is created 
-    function updateUserTask(){
+    async function updateUserTaskList() {
 
-        $.get("/api/login/user_data").then(function (data) {
-            let user = data.email;
-            $(".employee-name").text(user);
-    
-            // this prefilter was used to correct CORS that prevented the ajax from calling 
-            $.ajaxPrefilter(function (options) {
-                if (options.crossDomain && jQuery.support.cors) {
-                    var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
-                    options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
-                }
-            });
-    
-            let avatar = 'https://api.adorable.io/avatars/100/';
-            let customeIcon = avatar + user;
-    
-            $(".icon").attr('src', customeIcon);
-        });
+        // clear the task created folder 
+        // $("#taskCreatedAlert").text('Task Created!!!');
+
+        // make a ajax to call all of the task associated
+        let data = await $.get("/api/login/user_data");
+
+        console.log(data);
+        console.log(data.user);
+        console.log(data.id);
+
     }
 
+    $.get("/api/login/user_data").then(function (data) {
+        let user = data.email;
+        $(".employee-name").text(user);
 
+        // this prefilter was used to correct CORS that prevented the ajax from calling 
+        $.ajaxPrefilter(function (options) {
+            if (options.crossDomain && jQuery.support.cors) {
+                var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
+                options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
+            }
+        });
 
+        let avatar = 'https://api.adorable.io/avatars/100/';
+        let customeIcon = avatar + user;
 
+        $(".icon").attr('src', customeIcon);
+    });
 });
 
 
