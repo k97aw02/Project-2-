@@ -24,7 +24,7 @@ const exphbs = require("express-handlebars");
 // node extension better comments .1 
 
 // short circuit PORT 
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3301;
 // require the models for the starting 
 let db = require('./models');
 
