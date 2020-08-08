@@ -6,7 +6,7 @@ const department = require('./department');
 const task = require('./task');
 const role = require('./role');
 const employeeTask = require('./employeeTask');
-const register = reqiure('./register');
+const register = require('./register');
 
 //! api login 
 const login = require('./login');
