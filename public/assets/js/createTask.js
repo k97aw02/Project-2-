@@ -3,29 +3,31 @@ $(document).ready(function () {
     // and updates the HTML on the page
 
 
-
-    // $('#createTask').('click', (e) => {
-    //     e.preventDefault(); 
-
-    // }); 
-
+    // todo: get the data from the create a task window
+    // todo: smack the post route api/login 
+    // todo: create task through task model 
+    // todo: send into the database  
 
 
+    $('#createTask').on('click', (e) => {
+        e.preventDefault(); 
 
 
+        let task = $('#cityInputValue').val().trim(); 
 
 
-    // function loginUser(email, password) {
-    //     $.post("/api/login", {
-    //         email: email,
-    //         password: password
-    //     })
-    //         .then(function () {
-    //             window.location.replace("/members");
-    //             // If there's an error, log the error
-    //         })
-    //         .catch(function (err) {
-    //             console.log(err, 'this is the error');
-    //         });
-    // }
+        $.post("/api/login", {
+            task: task,
+        })
+            .then(function () {
+                window.location.replace("/members");
+                // If there's an error, log the error
+            })
+            .catch(function (err) {
+                console.log(err, 'this is the error');
+            });
+
+
+    }); 
+
 });
