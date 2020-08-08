@@ -1,5 +1,5 @@
 {{!-- this is the new navbar  --}}
-<nav class="navbar navbar-dark bg-primary  navbar-expand-lg">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg rounded">
     <a class="navbar-brand" href="#">Tasker</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,46 @@
 
 <div class="container-fluid">
     <div class="row">
-        <!-- SEARCH BAR-->
+        {{!-- these could be the cards  --}}
+        <!-- THE FORECAST  -->
+        <div class="col-12 col-lg-9 mt-3">
+            <div class="row">
+                {{!-- greetting  --}}
+                <div class="  col-md-8 col-6 font-weight-bold h-auto border border-primary bg-primary rounded-lg  ">
+                        {{!-- employee-name will be here  --}}
+                        <div >
+                             <h5 class="text-center text-white">Welcome, <span class="employee-name"></span>!!</h5>
+                        </div>
+                </div>
+                {{!-- this is the avatar  --}}
+                <div class="col-md-3 col-6 ">
+                    <div><img src="" alt="weather Icon" class="img-fluid icon rounded border ">
+                    </div>
+                </div>
+                <div class="col-12 bg-primary p-3 rounded font-weight-bold mt-3">
+                    <h4 class="font-weight-bold">Your Stats</h4>
+                    <ul class="list-group text-white">
+                        <div class="list-group-item bg-transparent ">Email : <span class="employee-name"></span></div>
+                        <div class="list-group-item bg-transparent ">name : <span class="humidity0">64</span>%</div>
+                        <div class="list-group-item bg-transparent ">Role : <span class="temp0">81</span>°F</div>
+                        <div class="list-group-item bg-transparent ">Department : <span class="temp0">81</span>°F</div>
+                    </ul>
+                </div>
+            </div>
+            <!-- maybe this is a list of other task that need to be done -->
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="ml-n3 display-3 ">Tasks to be done!</h1>
+                    <div class="row d-flex justify-content-between text-center">
+                        <div
+                            class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
+                            one task
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!-- SEARCH BAR-->
         <div class="col-12 col-lg-3 mt-3">
             <div class="row ">
                 <!-- create a task and maybe throw in search a task later -->
@@ -45,45 +84,6 @@
                     <div class="list-group searchHistory"><a
                             class="list-group-item list-group-item-action callbackThisTown list-group-item-primary text-primary ">here
                             we show the previous task that were completed already </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{!-- these could be the cards  --}}
-        <!-- THE FORECAST  -->
-        <div class="col-12 col-lg-9 mt-3">
-            <div class="row">
-                {{!-- greetting  --}}
-                <div class=" col-9 ">
-                    <div
-                        class="jumbotron jumbotron-fluid font-weight-bold h-auto border border-primary bg-primary rounded-lg">
-                        {{!-- employee-name will be here  --}}
-                        <h1 class="text-center text-white">Welcome, <span class="employee-name"></span>!!</h1>
-                    </div>
-                </div>
-                {{!-- this is the avatar  --}}
-                <div class="col-3 ">
-                    <div><img src="" alt="weather Icon" class="img-fluid icon rounded border ">
-                    </div>
-                </div>
-                <div class="col-12 bg-primary p-3 rounded font-weight-bold ">
-                    <ul class="list-group text-white">
-                        <div class="list-group-item bg-transparent ">Email : <span class="employee-name"></span></div>
-                        <div class="list-group-item bg-transparent ">name : <span class="humidity0">64</span>%</div>
-                        <div class="list-group-item bg-transparent ">Role : <span class="temp0">81</span>°F</div>
-                        <div class="list-group-item bg-transparent ">Department : <span class="temp0">81</span>°F</div>
-                    </ul>
-                </div>
-            </div>
-            <!-- maybe this is a list of other task that need to be done -->
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="ml-n3 display-3 ">Tasks to be done!</h1>
-                    <div class="row d-flex justify-content-between text-center">
-                        <div
-                            class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
-                            one task
-                        </div>
                     </div>
                 </div>
             </div>
