@@ -29,37 +29,38 @@ $(document).ready(function () {
                 // * clear the value in the box 
                 $("#cityInputValue").val('');
 
-                console.log(response);
+                // * this is the new TASK
+                console.log({response});
 
                 //!maybe a settimout 
                 // todo: set timeout to clear the message when it's done
 
 
-                updateUserTaskList();
+                updateUserTaskList(taskId);
 
             })
             .catch(function (err) {
-                console.log(err, 'there was an error in the ');
+                console.log(err, 'there was an error in the create task');
             });
 
     });
 
 
     // update once a new task is created 
-    async function updateUserTaskList() {
+    async function updateUserTaskList(taskId) {
+        // this is the task id
+        //! taskId
 
-        // clear the task created folder 
-        // $("#taskCreatedAlert").text('Task Created!!!');
-
-        // make a ajax to call all of the task associated
+        // make a ajax to call the current user ID
         let data = await $.get("/api/login/user_data");
 
-        console.log(data);
-        console.log(data.user);
-        console.log(data.id);
+        await $.get('')
 
     }
 
+
+
+    // ** AVATAR SET UP AT THE BEGINING OF THE PAGE 
     $.get("/api/login/user_data").then(function (data) {
         let user = data.email;
         $(".employee-name").text(user);
