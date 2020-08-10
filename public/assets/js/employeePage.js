@@ -3,7 +3,7 @@ $(document).ready(function () {
     // and updates the HTML on the page
     $.get("/api/login/user_data").then(function (data) {
         let user = data.email;
-        $(".employee-name").text(user);
+        $(".employee-email").text(user);
 
         // this prefilter was used to correct CORS that prevented the ajax from calling 
         $.ajaxPrefilter(function (options) {
@@ -19,3 +19,5 @@ $(document).ready(function () {
         $(".icon").attr('src', customeIcon);
     });
 });
+
+

@@ -12,9 +12,9 @@
             </li>
         </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" id="searchDirectory">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search">
-                <button class="btn btn-outline-success my-2 my-sm-0  text-white " id="searchDirectory" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0  text-white " id="searchDirectory" href="/directory" type="submit">Search</button>
                 <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text">Log Out</button>
             </form>
 
@@ -22,3 +22,19 @@
     </div>
 </nav>
 
+
+{{!-- Display Serach Result --}}
+
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+            <div class="card-title">{{full_name}}</div>
+            <p class="card-text"> {{phone_number}} {{email}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../public/directory.js"></script>
