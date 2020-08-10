@@ -15,7 +15,7 @@
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0  text-white " type="submit" href= "/directory" id="searchDirectory">Search</button>
-                <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text">Log Out</button>
+                <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text" id="logout">Log Out</button>
             </form>
 
 
@@ -40,10 +40,8 @@
                         </div>
                         <div class="col-12 mt-2">
                             <ul class="list-group text-white">
-                                <div class="list-group-item bg-transparent ">Email : <span class="employee-email"></span>
-                                </div>
-                                <div class="list-group-item bg-transparent ">Name :
-                                    <p id="employee-name"></p>
+                                <div class="list-group-item bg-transparent ">Email : <span class="employee-email"></span></div>
+                                <div class="list-group-item bg-transparent ">Name: <p class="employee-name"></p>
                                     <input type="text" name="user" placeholder="Enter Name">
                                     <button type="submit" class="btn btn-primary mb-2" id="updateName">Update Name</button>
                                 </div>

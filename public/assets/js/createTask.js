@@ -81,8 +81,9 @@ $(document).ready(function () {
 
     // ** AVATAR SET UP AT THE BEGINING OF THE PAGE 
     $.get("/api/login/user_data").then(function (data) {
-        let user = data.email;
-        $(".employee-name").text(user);
+        let full_name = data.full_name
+        let email = data.email;
+        $(".employee-name").text(full_name);
 
         // this prefilter was used to correct CORS that prevented the ajax from calling 
         $.ajaxPrefilter(function (options) {
@@ -93,7 +94,7 @@ $(document).ready(function () {
         });
 
         let avatar = 'https://api.adorable.io/avatars/100/';
-        let customeIcon = avatar + user;
+        let customeIcon = avatar + full_name;
 
         $(".icon").attr('src', customeIcon);
     });

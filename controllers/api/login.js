@@ -32,6 +32,7 @@ router.get("/user_data", function (req, res) {
         // Otherwise send back the user's email and id
         // Sending back a password, even a hashed password, isn't a good idea
         res.json({
+            full_name: req.user.full_name,
             email: req.user.email,
             id: req.user.id
         });
@@ -41,7 +42,7 @@ router.get("/user_data", function (req, res) {
 
 // logout functionality 
 // Route for logging user out
-router.get("/logout", function (req, res) {
+router.get("/logOut", function (req, res) {
     // login out session 
     req.logout();
     res.redirect("/");
