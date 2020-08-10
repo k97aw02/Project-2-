@@ -12,10 +12,9 @@
             </li>
         </ul>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                {{!-- Search Directory --}}
-                <button class="btn btn-outline-success my-2 my-sm-0  text-white " type="submit" id="searchDirectory">Search</button>
+            <form class="form-inline my-2 my-lg-0" id="searchDirectory">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search">
+                <button class="btn btn-outline-success my-2 my-sm-0  text-white " id="searchDirectory" href="/directory" type="submit">Search</button>
                 <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text">Log Out</button>
             </form>
 
@@ -36,3 +35,5 @@
         </div>
     </div>
 </div>
+
+<script src="../public/directory.js"></script>

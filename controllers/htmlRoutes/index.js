@@ -6,15 +6,12 @@ const router = require('express').Router();
 const signup = require('../api/signup');
 const home = require('./home'); 
 const loginPage = require('./loginPage'); 
-const resutls = require('./results');
-
+const directory = require('./directory');
 // html routes
 
 router.use('/', loginPage);
 router.use('/signup', signup);
 router.use('/home', home);
-router.use('/results', resutls);
-
-
+router.use('/directory', directory);
 
 module.exports = router; 

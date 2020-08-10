@@ -14,8 +14,7 @@
 
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                {{!-- Search Directory --}}
-                <button class="btn btn-outline-success my-2 my-sm-0  text-white " type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0  text-white " type="submit" href= "/directory" id="searchDirectory">Search</button>
                 <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text">Log Out</button>
             </form>
 
@@ -41,15 +40,24 @@
                         </div>
                         <div class="col-12 mt-2">
                             <ul class="list-group text-white">
-                                <div class="list-group-item bg-transparent ">Email : <span class="employee-name"></span>
+                                <div class="list-group-item bg-transparent ">Email : <span class="employee-email"></span>
                                 </div>
-                                <div class="list-group-item bg-transparent ">id : <span class="employee-id"></span>
+                                <div class="list-group-item bg-transparent ">Name :
+                                    <p id="employee-name"></p>
+                                    <input type="text" name="user" placeholder="Enter Name">
+                                    <button type="submit" class="btn btn-primary mb-2" id="updateName">Update Name</button>
                                 </div>
-                                <div class="list-group-item bg-transparent ">name : <span class="humidity0"></span>
+                                
+                                <div class="list-group-item bg-transparent ">Role : 
+                                    <p id="employee-role"></p>
+                                    <input type="text" name="role" placeholder="Enter Role">
+                                    <button type="submit" class="btn btn-primary mb-2" id="updateRole">Update Role</button>
                                 </div>
-                                <div class="list-group-item bg-transparent ">Role : <span class="temp0"></span>
-                                </div>
-                                <div class="list-group-item bg-transparent ">Department : <span class="temp0"></span>
+
+                                <div class="list-group-item bg-transparent ">Department : 
+                                    <p id="employee-department"></p>
+                                    <input type="text" name="department" placeholder="Enter Department">
+                                    <button type="submit" class="btn btn-primary mb-2" id="updateDepart">Update Role</button>
                                 </div>
                             </ul>
                         </div>
@@ -100,5 +108,8 @@
         </div>
 
     </div>
+    {{!-- <script src="/Users/nicoledavenport/utcode/Project-2-/public/assets/js/profile.js"></script> --}}
+    <script src="/assets/js/profile.js"></script>
+    <script src="/assets/js/directory.js"></script>
     <script src="/assets/js/employeePage.js"></script>
     <script src="/assets/js/createTask.js"></script>
