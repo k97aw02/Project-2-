@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/single/:id', async (req, res) => {
     let key = req.params.id;
-    let employee = await db.Employee.findOne({ where: { id: key }, include: [db.Task] });
+    let employee = await db.Employee.findOne({ where: { id: key }, include: [db.Task]});
     await res.json(employee);
 });
 

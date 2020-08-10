@@ -7,8 +7,11 @@ $(document).ready(function () {
         console.log(data.full_name);
         let email = data.email;
         console.log(data.email);
+        let role = (data.role_ID.role);
+        console.log(data)
         $(".employee-name").text(full_name);
         $(".employee-email").text(email);
+        $(".employee-role").test(role);
 
 
 });

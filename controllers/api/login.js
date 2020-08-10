@@ -18,6 +18,7 @@ var isAuthenticated = require('../../config/middleware/isAuthenitcated')
 router.post("/", passport.authenticate("local"), function (req, res) {
 
     res.json(req.user);
+    
 });
 
 // using the data that was sent to the req to pull up
@@ -34,6 +35,8 @@ router.get("/user_data", function (req, res) {
         res.json({
             full_name: req.user.full_name,
             email: req.user.email,
+            role: req.user.role_ID,
+            phone: req.user.phone_number,
             id: req.user.id
         });
     }
@@ -42,7 +45,7 @@ router.get("/user_data", function (req, res) {
 
 // logout functionality 
 // Route for logging user out
-router.get("/logOut", function (req, res) {
+router.get("/logout", function (req, res) {
     // login out session 
     req.logout();
     res.redirect("/");

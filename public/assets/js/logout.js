@@ -1,8 +1,18 @@
-$(document).ready(function(){
-    $('#logout').on('click', function(e){
-        if(confirm("Are you sure you want to logout?"))
-            window.location.href = "/";
+const router = require("express").Router();
+const path = require('path');
+var db = require('../../models')
 
-        return false;
+var passport = require('../../config/passport.js')
+
+
+
+
+$(document).ready(function(){
+    $('#logout').on('click', function(event){
+        if(confirm("Are you sure you want to logout?"))
+        logout();    
+        //window.location.href = "/";
+
+        else return false;
     });
 })
