@@ -1,5 +1,11 @@
 require('dotenv').config();
+var mysql = require('mysql');
+var connection;
 
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+}
+else {
 module.exports = {
     development: {
         username: "root",
@@ -23,5 +29,7 @@ module.exports = {
         dialect: "mysql"
     }
 };
-
+}
+connection.connect();
+module.exports = connection;
 // sedding
