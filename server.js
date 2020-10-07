@@ -1,5 +1,5 @@
 // *** this version is the only that is working 
-
+require("dotenv").config();
 
 // require express 
 const express = require('express');
