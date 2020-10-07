@@ -1,29 +1,14 @@
-require('dotenv').config();
-var mysql = require("mysql");
-
-var connection; 
-
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-  connection = mysql.createConnection({
-        username: "root",
-        password: "James1189", //process.env.DB_PASS, /// process.env.password
-        database: "employee_management",
-        host: "127.0.0.1",
-        dialect: "mysql"
-
-  })
-}
-
-// Make connection.
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
+module.exports = {
+    development: {
+      username: "b8zv3pw1y9n7ph1x",
+      password: "gqipq3ttsdqfafvn",
+      database: "YOUR JAWS DB DATABASE NAME",
+      host: "durvbryvdw2sjcm5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+      port: 3306,
+      dialect: "mysql"
+    },
+    "production": {
+      "use_env_variable": "JAWSDB_URL",
+      "dialect":  "mysql"
+    }
   }
-  console.log("connected as id " + connection.threadId);
-});
-
-// Export connection for our ORM to use.
-module.exports = connection;

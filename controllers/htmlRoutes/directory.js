@@ -3,7 +3,7 @@ const router = require("express").Router();
 
 //require the db to pull from employee models
 let employee = require('../../models/employee');
-let db = require('../../config/config');
+let db = require('../../config/connection');
 
 
 router.get('/', (res,req) => {

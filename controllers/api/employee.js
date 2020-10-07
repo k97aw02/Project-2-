@@ -1,5 +1,5 @@
 // instance of the router 
-const mysql = require('../../config/config');
+const mysql = require('../../config/connection');
 const router = require('express').Router();
 const employee = require('./employee');
 const bcrypt = require('bcryptjs');
