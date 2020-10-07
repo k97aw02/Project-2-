@@ -15,7 +15,7 @@
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0  text-white " type="submit" href= "/directory" id="searchDirectory">Search</button>
-                <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logOut text">Log Out</button>
+                <button class="btn btn-outline-success my-3 ml-2 my-sm-0 text-white logout text" href="/logout" id="logout">Log Out</button>
             </form>
 
 
@@ -27,10 +27,10 @@
     <div class="row">
 
         <!-- PIC && STATS  -->
-        <div class="col-12 col-lg-9 mt-3">
+        <div class="col-12 col-lg-9 mt-3" id="profile">
             <div class="row">
                 {{!-- stats && avatar--}}
-                <div class="col-12 bg-primary p-3 rounded font-weight-bold ">
+                <div class="col-12 bg-secondary p-3 rounded font-weight-bold ">
                     <div class="row">
                         <div class="col-5 col-md-6">
                             <div><img src="" alt="weather Icon" class=" icon rounded border "></div>
@@ -40,16 +40,13 @@
                         </div>
                         <div class="col-12 mt-2">
                             <ul class="list-group text-white">
-                                <div class="list-group-item bg-transparent ">Email : <span class="employee-email"></span>
-                                </div>
-                                <div class="list-group-item bg-transparent ">Name :
-                                    <p id="employee-name"></p>
+                                <div class="list-group-item bg-transparent ">Email : <span class="employee-email"></span></div>
+                                <div class="list-group-item bg-transparent ">Name: <p class="employee-name"></p>
                                     <input type="text" name="user" placeholder="Enter Name">
                                     <button type="submit" class="btn btn-primary mb-2" id="updateName">Update Name</button>
                                 </div>
                                 
-                                <div class="list-group-item bg-transparent ">Role : 
-                                    <p id="employee-role"></p>
+                                <div class="list-group-item bg-transparent ">Role : <p class="employee-role"></p>
                                     <input type="text" name="role" placeholder="Enter Role">
                                     <button type="submit" class="btn btn-primary mb-2" id="updateRole">Update Role</button>
                                 </div>
@@ -68,40 +65,39 @@
 
         <!-- SEARCH BAR-->
         <div class="col-12 col-lg-3 mt-3">
-            <div class="row ">
+            <div class="row p-3">
                 <!-- create a task and maybe throw in search a task later -->
-                <div class="col-12">
+                <div class="col-12 bg-secondary p-3 rounded font-weight-bold">
                     <h4 class="font-weight-bold">Tasks: <span id="taskCreatedAlert"></span> </h4>
                     <div class="input-group input-group-lg ">
                         <input class="form-control  input-group-lg border border-primary" id="cityInputValue"
                             type="search" placeholder="What are we doing today..." aria-label="Search">
                     </div>
-                </div>
-                <div class="col-sm-12 mt-2">
+                    <div class="col-sm-12 mt-2">
                     <!-- SEARCH BUTTON  -->
                     <button class="btn btn-lg btn-block btn-primary my-2 my-sm-0 px-5" id="createTask"
                         type="submit">Submit</button>
                 </div>
-                <!-- searched cities HISTORY --> {{!-- maybe we can do previous tasks here if we have time --}}
                 <div class="col-12 mt-2 ">
+                    <!-- searched cities HISTORY --> {{!-- maybe we can do previous tasks here if we have time --}}
                     <div class="list-group searchHistory"><a
                             class="list-group-item list-group-item-action callbackThisTown list-group-item-primary text-primary ">here
                             we show the previous task that were completed already </a>
                     </div>
                 </div>
+                </div>
+                
+                
+                
             </div>
         </div>
 
-        <div class="col-12 offset-lg-1 col-lg-10 mt-3">
+        <div class="col-lg-9 mt-3">
+            <h1 class="p-2 bg-primary rounded text-white">Tasks to be done!</h1>
             <!-- create a task  -->
             <div class="row">
                 <div class="col-12">
-                    <h1 class="ml-n3 display-5 ">Tasks to be done!</h1>
-                    <div class="row d-flex justify-content-between text-center tasks">
-                        <div
-                            class="col-sm-12 mb-2 col-md-6 border border-info bg-primary font-weight-bold  rounded-lg p-2 pb-3">
-                            one task
-                        </div>
+                    <div class="col-md-4 row d-flex justify-content-between text-center tasks"> 
                     </div>
                 </div>
             </div>
@@ -113,3 +109,4 @@
     <script src="/assets/js/directory.js"></script>
     <script src="/assets/js/employeePage.js"></script>
     <script src="/assets/js/createTask.js"></script>
+    <script src="/assets/js/logout.js"></script>

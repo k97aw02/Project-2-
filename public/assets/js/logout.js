@@ -1,6 +1,7 @@
-$(document).ready(function() {
-    $("form.home").on("Log Out", function(event) {
-        event.preventDefault();
-        window.location.replace("/index");
-});
-})
+$(document).ready(function(){
+    $('#logout').on('click', function(event){
+        //if(confirm("Are you sure you want to logout?"))
+          console.log("logout clicked");   
+        })
+       
+    })

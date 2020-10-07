@@ -3,10 +3,16 @@ $(document).ready(function () {
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
     $.get("/api/login/user_data").then(function (data) {
-        let user = data.email;
-        $(".employee-email").text(user);
+        let full_name = data.full_name;
+        console.log(data.full_name);
+        let email = data.email;
+        console.log(data.email);
+        let role = (data.role_ID);
+        console.log(data)
+        $(".employee-name").text(full_name);
+        $(".employee-email").text(email);
+        $(".employee-role").text(role);
 
 
 });
-
-
+})

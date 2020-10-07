@@ -18,6 +18,7 @@ var isAuthenticated = require('../../config/middleware/isAuthenitcated')
 router.post("/", passport.authenticate("local"), function (req, res) {
 
     res.json(req.user);
+    
 });
 
 // using the data that was sent to the req to pull up
@@ -32,7 +33,10 @@ router.get("/user_data", function (req, res) {
         // Otherwise send back the user's email and id
         // Sending back a password, even a hashed password, isn't a good idea
         res.json({
+            full_name: req.user.full_name,
             email: req.user.email,
+            role: req.user.role_ID,
+            phone: req.user.phone_number,
             id: req.user.id
         });
     }
